@@ -1,67 +1,83 @@
 <!-- put this inside head tag together with other scripts -->
 <script async custom-element="amp-selector" src="https://cdn.ampproject.org/v0/amp-selector-0.1.js"></script>
 
+
+
+
+
 <!-- put this inside head tag together with other styles -->
 <style amp-custom>
-:root {
-  --color-primary: #005AF0;
-  --space-1: .5rem;  /* 8px */
-  --space-4: 2rem;   /* 32px */
-}
+  :root {
+    --color-primary: #005AF0;
+    --space-1: .5rem;  /* 8px */
+    --space-4: 2rem;   /* 32px */
+  }
 
-/* Styles for the flex layout based tabs */
-amp-selector[role=tablist].tabs-with-flex {
-    display: flex;
-    flex-wrap: wrap;
-}
-amp-selector[role=tablist].tabs-with-flex [role=tab] {
-    flex-grow: 1;
+  /* Styles for the flex layout based tabs */
+  amp-selector[role=tablist].tabs-with-flex {
+      display: flex;
+      flex-wrap: wrap;
+  }
+  amp-selector[role=tablist].tabs-with-flex [role=tab] {
+      flex-grow: 1;
+      /* custom styling, feel free to change */
+      text-align: center;
+      padding: var(--space-1);
+  }
+  amp-selector[role=tablist].tabs-with-flex [role=tab][selected] {
+      outline: none;
+      /* custom styling, feel free to change */
+      border-bottom: 2px solid var(--color-primary);
+  }
+  amp-selector[role=tablist].tabs-with-flex [role=tabpanel] {
+      display: none;
+      width: 100%;
+      order: 1; /* must be greater than the order of the tab buttons to flex to the next line */
+      /* custom styling, feel free to change */
+      padding: var(--space-4);
+  }
+  amp-selector[role=tablist].tabs-with-flex [role=tab][selected] + [role=tabpanel] {
+      display: block;
+  }
+
+  /* Styles for the selector based tabs */
+  amp-selector[role=tablist].tabs-with-selector {
+      display: flex;
+  }
+  amp-selector[role=tablist].tabs-with-selector [role=tab][selected] {
+      outline: none;
+      /* custom styling, feel free to change */
+      border-bottom: 2px solid var(--color-primary);
+  }
+  amp-selector[role=tablist].tabs-with-selector {
+      display: flex;
+  }
+  amp-selector[role=tablist].tabs-with-selector [role=tab] {
     /* custom styling, feel free to change */
+    width: 100%;
     text-align: center;
     padding: var(--space-1);
-}
-amp-selector[role=tablist].tabs-with-flex [role=tab][selected] {
-    outline: none;
-    /* custom styling, feel free to change */
-    border-bottom: 2px solid var(--color-primary);
-}
-amp-selector[role=tablist].tabs-with-flex [role=tabpanel] {
+  }
+  amp-selector.tabpanels [role=tabpanel] {
     display: none;
-    width: 100%;
-    order: 1; /* must be greater than the order of the tab buttons to flex to the next line */
     /* custom styling, feel free to change */
     padding: var(--space-4);
-}
-amp-selector[role=tablist].tabs-with-flex [role=tab][selected] + [role=tabpanel] {
-    display: block;
-}
-
-/* Styles for the selector based tabs */
-amp-selector[role=tablist].tabs-with-selector {
-    display: flex;
-}
-amp-selector[role=tablist].tabs-with-selector [role=tab][selected] {
+  }
+  amp-selector.tabpanels [role=tabpanel][selected] {
     outline: none;
-    /* custom styling, feel free to change */
-    border-bottom: 2px solid var(--color-primary);
-}
-amp-selector[role=tablist].tabs-with-selector {
-    display: flex;
-}
-amp-selector[role=tablist].tabs-with-selector [role=tab] {
-  /* custom styling, feel free to change */
-  width: 100%;
-  text-align: center;
-  padding: var(--space-1);
-}
-amp-selector.tabpanels [role=tabpanel] {
-  display: none;
-  /* custom styling, feel free to change */
-  padding: var(--space-4);
-}
-amp-selector.tabpanels [role=tabpanel][selected] {
-  outline: none;
-  display: block;
-}
+    display: block;
+  }
 </style>
 
+
+
+
+<!-- put this inside body tag where you want to put the tabs -->
+<amp-selector class="tabs-with-flex" role="tablist">
+  <div id="tab1" role="tab" aria-controls="tabpanel1" option selected>Tab one</div>
+  <div id="tabpanel1" role="tabpanel" aria-labelledby="tab1">Tab one content... </div>
+  <div id="tab2" role="tab" aria-controls="tabpanel2" option>Tab two</div>
+  <div id="tabpanel2" role="tabpanel" aria-labelledby="tab2">Tab two content... </div>
+  <div id="tab3" role="tab" aria-controls="tabpanel3" option>Tab three</div>
+  <div id="tabpanel3" role="tabpanel" aria-labelledby="tab3">Tab three content... </div>
+</amp-selector>
