@@ -1,4 +1,7 @@
-# AMP Templates
+# AMP (Accelerated Mobile Pages)
+Update is suspended until AMP developers shows aggression towards progress
+
+## AMP Templates
 This is a collection of templates and boilerplate for AMP projects
 
 ## Resources for AMP Development
